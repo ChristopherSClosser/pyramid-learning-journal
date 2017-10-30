@@ -2,16 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <title>Learning Journal</title>
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <script type="text/javascript" src="script/app.js"></script>
   </head>
   <body>
-    <h1>Learning Journal:</h1>
+    <header class="header">
+      <div class="my-name">
+        Learning Journal:
+      </div>
+      <button class="burger">&#9776;</button>
+      <nav class="hidden main-nav" id="main-nav">
+        <ul>
+          <li><a id="home"href="home.html">Home</a></li>
+          <hr>
+          <li><a id="github"href="entry.html">New Entry</a></li>
+          <hr>
+          <li><a id="gallery" href="detail.html">Detail</a></li>
+          <hr>
+          <li><a id="me" href="edit.html">Edit</a></li>
+          <hr>
+        </ul>
+      </nav>
+    </header>
     <div class="entries">
       <ul>
-        
+
       </ul>
 
     </div>
+<script type="text/javascript">
 
+</script>
   </body>
 </html>
