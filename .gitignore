@@ -3,6 +3,7 @@
 *.pyc
 *$py.class
 *~
+ENV
 .coverage
 coverage.xml
 build/
