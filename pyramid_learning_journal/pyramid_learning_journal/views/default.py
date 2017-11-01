@@ -1,11 +1,12 @@
 """Views for learning journal."""
 from pyramid.response import Response
+from pyramid.view import view_config
 import io
 import os
 
 HERE = os.path.dirname(__file__)
 
-
+@view_config(route_name=home, renderer='../templates/home.jinja2')
 def list_view(request):
     """Display the list of entries."""
     path = os.path.join(HERE, '../templates/home.html')
