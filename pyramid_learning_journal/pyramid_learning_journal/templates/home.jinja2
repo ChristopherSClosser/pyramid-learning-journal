@@ -38,15 +38,16 @@
       {% if entries %}
         {% for entry in entries %}
           <article>
+            <hr>
             <h2><a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
             <p>Created {{ entry.created }}</p>
-
             {{ entry.markdown|safe }}
           </article>
         {% endfor %}
       {% else %}
         <p>There are no entries to list</p>
       {% endif %}
+      {% block content %}{% endblock %}
     </div>
   </body>
 </html>

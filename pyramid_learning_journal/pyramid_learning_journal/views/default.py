@@ -17,11 +17,10 @@ def list_view(request):
 @view_config(route_name='detail', renderer='../templates/detail.jinja2')
 def detail_view(request):
     """Display a detail view of entry."""
-    return {
-        'title': "theTitle",
-        "created": "the year 3000",
-        "markdown": "this is an article that doesn't say anything."
-    }
+    ident = int(request.matchdict['id'])
+    for entry in ENTRIES:
+        if entry['id'] == ident:
+            return {'entry': entry}
 
 
 def create_view(request):

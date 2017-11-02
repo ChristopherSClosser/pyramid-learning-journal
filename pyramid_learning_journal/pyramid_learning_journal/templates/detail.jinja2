@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Entry Detail</title>
-  </head>
-  <body>
-    <article>
-      <h1><a href="{{ request.url }}">{{ title }}</a></h1>h1>
-      <hr />
-      <p>Created {{ created }} </p>
-      <p>{{ markdown }}</p>
-    </article>
+<!-- {% extends 'home.jinja2' %} -->
 
-  </body>
-</html>
+{% block content%}
+  <main>
+    <article>
+      <h1>{{ entry.title }}</h1>
+      <hr />
+      <p>Created {{ entry.created }} </p>
+      <p>{{ entry.markdown|safe }}</p>
+    </article>
+  </main>
+{% endblock %}
