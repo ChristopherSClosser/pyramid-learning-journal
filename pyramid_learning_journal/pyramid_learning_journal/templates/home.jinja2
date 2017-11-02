@@ -39,8 +39,9 @@
         {% for entry in entries %}
           <article>
             <h2><a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
-            <p>Created {{ entry.creation_date }}</p>
-            <p>{{ entry.body }}</p>
+            <p>Created {{ entry.created }}</p>
+
+            {{ entry.markdown|safe }}
           </article>
         {% endfor %}
       {% else %}
