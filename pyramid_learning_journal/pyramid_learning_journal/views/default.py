@@ -2,29 +2,37 @@
 from pyramid.response import Response
 import io
 import os
+from entries import ENTRIES
+from pyramid.view import view_config
+from pyramid.httpexceptions import HTTPFound
 
 HERE = os.path.dirname(__file__)
 
 
+@view_config(route_name="home", renderer="../templates/home.jinja2")
 def list_view(request):
     """Display the list of entries."""
-    path = os.path.join(HERE, '../templates/home.html')
-    with io.open(path) as res:
-        return Response(res.read())
+    return {'entries': ENTRIES}
 
 
+@view_config(route_name='detail', renderer='../templates/detail.jinja2')
 def detail_view(request):
     """Display a detail view of entry."""
-    path = os.path.join(HERE, '../templates/detail.html')
-    with io.open(path) as res:
-        return Response(res.read())
+    ident = int(request.matchdict['id'])
+    for entry in ENTRIES:
+        if entry['id'] == ident:
+            return {'entry': entry}
 
 
+@view_config(route_name='new', renderer='../templates/entry.jinja2')
 def create_view(request):
     """Display create a list entry."""
-    path = os.path.join(HERE, '../templates/entry.html')
-    with io.open(path) as res:
-        return Response(res.read())
+    # path = os.path.join(HERE, '../templates/entry.html')
+    # with io.open(path) as res:
+    #     return Response(res.read())
+    # if request.method == 'GET':
+
+    return {}  # HTTPFound(request.route_url('home'))
 
 
 def update_view(request):

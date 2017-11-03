@@ -35,21 +35,19 @@
       </nav>
     </header>
     <div class="entries">
-      <ul>
-        <li>
-          <h2>Day 12</h2>
-          <h3>Today I learned:</h3>
-          <ul>
-            <li>Binary heap min and max</li>
-            <li>Start to Implement max heap</li>
-            <li>Using jinja2 templates</li>
-            <li>MVC</li>
-            <li>Pyramid Renderers</li>
-            <li>Group project selection</li>
-          </ul>
-        </li>
-      </ul>
-
+      {% block content %}{% endblock %}
+      {% if entries %}
+        {% for entry in entries %}
+          <article>
+            <hr>
+            <h2><a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
+            <p>Created {{ entry.created }}</p>
+            {{ entry.markdown|safe }}
+          </article>
+        {% endfor %}
+      {% else %}
+        <p>There are no entries to list</p>
+      {% endif %}
     </div>
   </body>
 </html>

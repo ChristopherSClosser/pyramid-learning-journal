@@ -18,6 +18,7 @@ requires = [
     'SQLAlchemy',
     'transaction',
     'zope.sqlalchemy',
+    'psycopg2',  # add from class
     'waitress',
 ]
 
