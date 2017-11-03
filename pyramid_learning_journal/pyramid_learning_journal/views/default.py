@@ -4,6 +4,7 @@ import io
 import os
 from entries import ENTRIES
 from pyramid.view import view_config
+from pyramid.httpexceptions import HTTPFound
 
 HERE = os.path.dirname(__file__)
 
@@ -23,11 +24,15 @@ def detail_view(request):
             return {'entry': entry}
 
 
+@view_config(route_name='new', renderer='../templates/entry.jinja2')
 def create_view(request):
     """Display create a list entry."""
-    path = os.path.join(HERE, '../templates/entry.html')
-    with io.open(path) as res:
-        return Response(res.read())
+    # path = os.path.join(HERE, '../templates/entry.html')
+    # with io.open(path) as res:
+    #     return Response(res.read())
+    # if request.method == 'GET':
+
+    return {}  # HTTPFound(request.route_url('home'))
 
 
 def update_view(request):

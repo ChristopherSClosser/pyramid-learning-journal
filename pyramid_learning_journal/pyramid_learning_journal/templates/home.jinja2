@@ -35,6 +35,7 @@
       </nav>
     </header>
     <div class="entries">
+      {% block content %}{% endblock %}
       {% if entries %}
         {% for entry in entries %}
           <article>
@@ -47,7 +48,6 @@
       {% else %}
         <p>There are no entries to list</p>
       {% endif %}
-      {% block content %}{% endblock %}
     </div>
   </body>
 </html>
