@@ -3,8 +3,9 @@ from sqlalchemy import (
     Index,
     Integer,
     Text,
+    DateTime
 )
-
+import datetime
 from .meta import Base
 
 
@@ -20,7 +21,7 @@ class Entry(Base):
     id = Column(Integer, primary_key=True)
     title = Column(Text)
     body = Column(Text)
-    date_created = Column(Integer)
+    date_created = Column(DateTime)
 
 
 Index('my_index', MyModel.name, unique=True, mysql_length=255)
