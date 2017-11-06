@@ -37,6 +37,8 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+DATABASE_URL='postgres://postgres:1234@localhost:5432/learning_journal'
+
 VIRTUAL_ENV="C:\Users\patti\codefellows\week3\pyramid-learning-journal\ENV"
 export VIRTUAL_ENV
 
