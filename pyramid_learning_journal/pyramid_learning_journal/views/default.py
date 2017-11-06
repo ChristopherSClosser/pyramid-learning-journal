@@ -1,11 +1,8 @@
 """Views for learning journal."""
 from pyramid.response import Response
 from pyramid.view import view_config
-from entries import ENTRIES
-import io
-import os
 from ..models import MyModel
-from pyramid.view import view_config
+import os
 
 HERE = os.path.dirname(__file__)
 
