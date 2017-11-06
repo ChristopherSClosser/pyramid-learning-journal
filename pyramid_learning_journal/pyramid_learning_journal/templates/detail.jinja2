@@ -1,6 +1,6 @@
 {% extends 'home.jinja2' %}
 
-{% block content%}
+{% block content %}
   <main>
     <article>
       <h1>{{ entry.title }}</h1>
@@ -8,5 +8,6 @@
       <p>Created {{ entry.created }} </p>
       <p>{{ entry.markdown|safe }}</p>
     </article>
+    <p><a href="{{ request.route_url('edit', id=entry.id) }}">Edit</a></p>
   </main>
 {% endblock %}
