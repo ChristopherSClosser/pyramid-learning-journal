@@ -3,8 +3,6 @@ from pyramid.response import Response
 from pyramid.view import view_config
 from ..models import MyModel
 import os
-from entries import ENTRIES
-from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
 
 HERE = os.path.dirname(__file__)
