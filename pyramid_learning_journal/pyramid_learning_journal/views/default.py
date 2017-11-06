@@ -30,7 +30,6 @@ def detail_view(request):
 @view_config(route_name='new', renderer='../templates/entry.jinja2')
 def create_view(request):
     """Display create a list entry."""
-
     return {}
 
 
