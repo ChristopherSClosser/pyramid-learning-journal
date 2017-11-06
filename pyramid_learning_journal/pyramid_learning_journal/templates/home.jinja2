@@ -27,24 +27,20 @@
           <hr>
           <li><a id="github"href="/journal/new-entry">New Entry</a></li>
           <hr>
-          <li><a id="gallery" href="/journal/{id:\d+}">Detail</a></li>
-          <hr>
-          <li><a id="me" href="/journal/{id:\d+}/edit-entry">Edit</a></li>
-          <hr>
         </ul>
       </nav>
     </header>
     <div class="entries">
+      {% block content %}{% endblock %}
       {% if entries %}
         {% for entry in entries %}
           <article>
+            <hr>
             <h2><a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
-            <p>Created {{ entry.creation_date }}</p>
-            <p>{{ entry.body }}</p>
+            <p>Created {{ entry.created }}</p>
+            {{ entry.markdown|safe }}
           </article>
         {% endfor %}
-      {% else %}
-        <p>There are no entries to list</p>
       {% endif %}
     </div>
   </body>
