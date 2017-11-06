@@ -18,3 +18,4 @@ class MyModel(Base):
 
 
 Index('my_index', MyModel.id, unique=True, mysql_length=255)
+
