@@ -4,11 +4,16 @@ from pyramid.view import view_config
 from entries import ENTRIES
 import io
 import os
+from entries import ENTRIES
+from pyramid.view import view_config
+from pyramid.httpexceptions import HTTPFound
 
 HERE = os.path.dirname(__file__)
 
 
+
 @view_config(route_name='home', renderer='../templates/home.jinja2')
+
 def list_view(request):
     """Display the list of entries."""
     return {'entries': ENTRIES}
@@ -26,6 +31,7 @@ def detail_view(request):
 @view_config(route_name='new', renderer='../templates/entry.jinja2')
 def create_view(request):
     """Display create a list entry."""
+
     return {}
 
 
