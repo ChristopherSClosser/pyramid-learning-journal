@@ -1,12 +1,10 @@
 {% extends 'home.jinja2' %}
 
 {% block content%}
-  <main>
-    <article>
+  <section>
       <h1>{{ entry.title }}</h1>
       <hr />
       <p>Created {{ entry.created }} </p>
       <p>{{ entry.markdown|safe }}</p>
-    </article>
-  </main>
+  </section>
 {% endblock %}

@@ -73,10 +73,6 @@ img {
     z-index: -1;
 }
 
-.entries {
-  position: absolute;
-  top: 20%;
-}
 
 .gallery li img {
     display: block;
@@ -121,13 +117,6 @@ img {
     display: none;
 }
 
-.header {
-    height: 50px;
-    background-color: hsla(24, 67%, 57%, 1);
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
 
 .foot {
     font-size: .5em;
@@ -239,4 +228,23 @@ img {
     .hidden hr {
         display: none;
     }
+}
+
+.list {
+
+}
+
+.header {
+  height: 50px;
+  background-color: hsla(24, 67%, 57%, 1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999999;
+}
+
+.entries {
+  position: absolute;
+  color: black;
+  top: 20%;
 }
