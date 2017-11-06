@@ -1,7 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import MetaData
-from sqlalchemy import Base
-from datetime import datetime
 # Recommended naming convention used by Alembic, as various different database
 # providers will autogenerate vastly different names making migrations more
 # difficult. See: http://alembic.zzzcomputing.com/en/latest/naming.html
@@ -15,11 +13,3 @@ NAMING_CONVENTION = {
 
 metadata = MetaData(naming_convention=NAMING_CONVENTION)
 Base = declarative_base(metadata=metadata)
-
-
-class Entry(Base):
-    _tablename_ = 'entries'
-    id = Column(Integer, primary_key="True")
-    title = Column(String)
-    body = Column(String)
-    creation_date = (DateTime)

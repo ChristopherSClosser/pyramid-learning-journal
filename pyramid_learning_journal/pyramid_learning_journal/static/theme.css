@@ -245,5 +245,6 @@ img {
 
 .entries {
   position: absolute;
+  color: black;
   top: 20%;
 }
