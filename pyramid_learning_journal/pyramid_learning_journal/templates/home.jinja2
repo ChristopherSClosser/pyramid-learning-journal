@@ -24,16 +24,19 @@
         </ul>
       </nav>
     </header>
+
     <content class="entries">
       {% block content %}{% endblock %}
       {% if entries %}
         {% for entry in entries %}
           <section class='list'>
+
             <hr>
             <h2><a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
             <p>Created {{ entry.created }}</p>
             {{ entry.markdown|safe }}
           </section>
+
         {% endfor %}
       {% endif %}
     </content>

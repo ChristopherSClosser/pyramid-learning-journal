@@ -1,3 +1,4 @@
+
 {% extends 'home.jinja2' %}
 
 {% block content %}
@@ -8,4 +9,5 @@
   <p>{{ entry.markdown|safe }}</p>
   <p><a href="{{ request.route_url('edit', id=entry.id) }}">Edit</a></p>
 </section>
+
 {% endblock %}
