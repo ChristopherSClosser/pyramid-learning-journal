@@ -1,13 +1,11 @@
 {% extends 'home.jinja2' %}
 
 {% block content %}
-  <main>
-    <article>
-      <h1>{{ entry.title }}</h1>
-      <hr />
-      <p>Created {{ entry.created }} </p>
-      <p>{{ entry.markdown|safe }}</p>
-    </article>
-    <p><a href="{{ request.route_url('edit', id=entry.id) }}">Edit</a></p>
-  </main>
+<section>
+  <h1>{{ entry.title }}</h1>
+  <hr />
+  <p>Created {{ entry.created }} </p>
+  <p>{{ entry.markdown|safe }}</p>
+  <p><a href="{{ request.route_url('edit', id=entry.id) }}">Edit</a></p>
+</section>
 {% endblock %}
