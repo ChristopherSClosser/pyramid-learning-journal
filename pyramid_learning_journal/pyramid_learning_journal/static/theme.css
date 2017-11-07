@@ -16,7 +16,7 @@ h3 {
 }
 
 li {
-    list-style: none;
+    /*list-style: none;*/
     color: #81766a;
 }
 
@@ -40,6 +40,7 @@ content p {
     font-size: 24px;
     font-weight: 600;
     color: #6d6464;
+    display: inline-block;
 }
 
 h1 a:hover {
@@ -128,7 +129,7 @@ img {
 #project-list {
     float: right;
     margin-top: 2%;
-    list-style-type: none;
+    /*list-style-type: none;*/
     position: absolute;
 }
 
@@ -234,8 +235,18 @@ img {
   z-index: 99999999;
 }
 
-.entries > ul {
+.list > ul {
   font-family: 'Amatic SC', sans-serif;
+  font-weight: bold;
+  /*position: absolute;
+  top: 20%;*/
+  list-style: square;
+  color: black;
+}
+
+.entries > li {
+  font-family: 'Amatic SC', sans-serif;
+
   font-weight: bold;
   position: absolute;
   top: 20%;
@@ -249,4 +260,8 @@ section {
     text-align: left;
     padding: 4%;
     background-color: white;
+}
+
+section > button {
+  vertical-align: middle;
 }
