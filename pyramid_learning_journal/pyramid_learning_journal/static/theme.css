@@ -231,7 +231,7 @@ img {
 }
 
 .list {
-  
+
 }
 
 .header {
@@ -243,7 +243,10 @@ img {
   z-index: 99999999;
 }
 
-.entries {
+.entries > ul {
+  font-family: 'Amatic SC', sans-serif;
+  font-weight: bold;
   position: absolute;
   top: 20%;
+  color: black;
 }
