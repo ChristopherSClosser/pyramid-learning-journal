@@ -51,8 +51,9 @@ def update_view(request):
     if request.POST:
         entry.title = request.POST["title"]
         entry.markdown = request.POST["markdown"]
+        # import pdb; pdb.set_trace()
         request.dbsession.flush()
-        return HTTPFound(request.route_url('detail'))
+        return HTTPFound(request.route_url('home'))
 
     form_fill = {
         "title": entry.title,
