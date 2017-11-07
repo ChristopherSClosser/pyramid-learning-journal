@@ -30,6 +30,8 @@ def detail_view(request):
 @view_config(route_name='new', renderer='../templates/entry.jinja2')
 def create_view(request):
     """Display create a list entry."""
+    if request.GET:
+        return {}
     if request.POST:
         entry = MyModel(
             title=request.POST["title"],
@@ -50,7 +52,7 @@ def update_view(request):
         entry.title = request.POST["title"]
         entry.markdown = request.POST["markdown"]
         request.dbsession.flush()
-        return HTTPFound(request.route_url('home'))
+        return HTTPFound(request.route_url('detail'))
 
     form_fill = {
         "title": entry.title,

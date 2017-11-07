@@ -2,6 +2,21 @@
 
 ENTRIES = [
     {
+'text': "### Today I learned: - For Heroku: - enables use of https and serving css - in production: - change [app:main] to [app:pyramid_learning_journal] - above [server:main]add: - [filter:paste_prefix] - use = egg:PasteDeploy#prefix - [pipeline:main] - pipeline = - paste_prefix pyramid_learning_journal - in requirements add: - psycopg2==2.7.3 - pytest==3.2.3",
+'created': "2017-11-07T13:56:38.085925",
+'id': 976,
+'markdown': "<h3>Today I learned:</h3> <ul> <li> <p>For Heroku:</p> <ul> <li>enables use of https and serving css</li> <li> <p>in production:</p> <ul> <li>change [app:main] to [app:pyramid_learning_journal]</li> <li> <p>above [server:main]add:</p> <ul> <li> <p>[filter:paste_prefix]</p> <ul> <li>use = egg:PasteDeploy#prefix</li> </ul> </li> <li> <p>[pipeline:main]</p> <ul> <li>pipeline =</li> <li>paste_prefix pyramid_learning_journal</li> </ul> </li> </ul> </li> </ul> </li> <li> <p>in requirements add:</p> <ul> <li>psycopg2==2.7.3</li> <li>pytest==3.2.3</li> </ul> </li> </ul> </li> </ul>",
+'author': {
+'display_name': "ChristopherSClosser",
+'id': 45,
+'username': "ChristopherSClosser",
+'course_id': [
+"sea401d7"
+]
+},
+'title': "Day 16"
+},
+    {
         'title': "Day 13",
         'text': "### Today I learned: - Implement priority queue - SQLAlchemy (avoid sql injection security risk) - object relational mapper (translation layer your code --> SQL) - models/mymodels.py -- import models in models/__init__ - in model import Unicode Float DateTime - add correct Columns - set create date.now() in __init__ for model class - add and commit to get it in your db - many query methods - initializedb.py ---line 38:--- Base.metadata.drop_all(engine) - initdb development.ini - set in ENV/bin/activate export DATABASE_URL=' postgres://localhost:5432/learning_journal' - os.eviron[DATABASE_URL] - remove from development.ini and production - update __init__.py settings['sqlalchemy.url'] = os.eviron[DATABASE_URL] - then initializedb.py same line",
         'author': {

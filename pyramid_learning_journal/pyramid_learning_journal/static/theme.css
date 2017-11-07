@@ -265,3 +265,8 @@ section {
 section > button {
   vertical-align: middle;
 }
+
+textarea {
+  width: 200%;
+  height: 10em;
+}
