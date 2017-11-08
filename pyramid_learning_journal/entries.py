@@ -3,18 +3,11 @@
 ENTRIES = [
     {
     'title': "Day 16",
-'text': "### Today I learned: - For Heroku: - enables use of https and serving css - in production: - change [app:main] to [app:pyramid_learning_journal] - above [server:main]add: - [filter:paste_prefix] - use = egg:PasteDeploy#prefix - [pipeline:main] - pipeline = - paste_prefix pyramid_learning_journal - in requirements add: - psycopg2==2.7.3 - pytest==3.2.3",
+
 'created': "2017-11-07T13:56:38.085925",
 'id': 976,
 'markdown': "<h3>Today I learned:</h3> <ul> <li> <p>For Heroku:</p> <ul> <li>enables use of https and serving css</li> <li> <p>in production:</p> <ul> <li>change [app:main] to [app:pyramid_learning_journal]</li> <li> <p>above [server:main]add:</p> <ul> <li> <p>[filter:paste_prefix]</p> <ul> <li>use = egg:PasteDeploy#prefix</li> </ul> </li> <li> <p>[pipeline:main]</p> <ul> <li>pipeline =</li> <li>paste_prefix pyramid_learning_journal</li> </ul> </li> </ul> </li> </ul> </li> <li> <p>in requirements add:</p> <ul> <li>psycopg2==2.7.3</li> <li>pytest==3.2.3</li> </ul> </li> </ul> </li> </ul>",
-'author': {
-'display_name': "ChristopherSClosser",
-'id': 45,
-'username': "ChristopherSClosser",
-'course_id': [
-"sea401d7"
-]
-},
+
 },
     {
         'title': "Day 13",
