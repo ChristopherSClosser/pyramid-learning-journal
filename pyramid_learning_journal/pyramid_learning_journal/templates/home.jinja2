@@ -34,8 +34,8 @@
             <hr>
             <h2><a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
             <p>Created {{ entry.created }}</p>
-            <br>
-            {{ entry.markdown|safe }}
+            <h3>Today I Learned: {{ entry.markdown|safe }}</h3>
+
           </section>
 
         {% endfor %}
