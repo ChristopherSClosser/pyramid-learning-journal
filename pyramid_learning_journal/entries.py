@@ -1,7 +1,8 @@
 """Hold the blog entries."""
 
 ENTRIES = [
-{
+    {
+    'title': "Day 16"
 'text': "### Today I learned: - For Heroku: - enables use of https and serving css - in production: - change [app:main] to [app:pyramid_learning_journal] - above [server:main]add: - [filter:paste_prefix] - use = egg:PasteDeploy#prefix - [pipeline:main] - pipeline = - paste_prefix pyramid_learning_journal - in requirements add: - psycopg2==2.7.3 - pytest==3.2.3",
 'created': "2017-11-07T13:56:38.085925",
 'id': 976,
@@ -13,6 +14,7 @@ ENTRIES = [
 'course_id': [
 "sea401d7"
 ]
+},
 },
     {
         'title': "Day 13",
