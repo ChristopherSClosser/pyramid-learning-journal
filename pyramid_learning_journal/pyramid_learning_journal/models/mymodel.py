@@ -16,5 +16,14 @@ class MyModel(Base):
     markdown = Column(Text)
     created = Column(Date)
 
+    def to_dict(self):
+        """Take all model attributes and render them as a dictionary."""
+        return {
+            'id': self.id,
+            'title': self.title,
+            'markdown': self.markdown,
+            'created': self.created
+        }
 
 Index('my_index', MyModel.id, unique=True, mysql_length=255)
+
