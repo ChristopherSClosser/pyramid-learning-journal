@@ -13,7 +13,7 @@ HERE = os.path.dirname(__file__)
 def list_view(request):
     """Display the list of entries."""
     query = request.dbsession.query(MyModel)
-    entries = query.order_by(MyModel.created.asc()).all()
+    entries = query.order_by(MyModel.created.desc()).all()
     return {'entries': entries}
 
 
