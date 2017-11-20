@@ -48,7 +48,7 @@ def main(argv=sys.argv):
             new_entry = MyModel(
                 title=entry["title"],
                 markdown=entry["markdown"],
-                created=datetime.now(),
+                created=entry["created"],
             )
             many_entries.append(new_entry)
         dbsession.add_all(many_entries)
