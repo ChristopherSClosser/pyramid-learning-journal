@@ -17,4 +17,4 @@ class MyModel(Base):
     created = Column(Date)
 
 
-Index('my_index', MyModel.id, unique=True, mysql_length=255)
+# Index('my_index', MyModel.id, unique=True, mysql_length=255)
