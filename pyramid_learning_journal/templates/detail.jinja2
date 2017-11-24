@@ -1,0 +1,14 @@
+
+{% extends 'home.jinja2' %}
+
+{% block content %}
+<section>
+  <h1>{{ entry.title }}</h1>
+  <hr />
+  <p>Created {{ entry.created }} </p>
+  <button><a href="{{ request.route_url('edit', id=entry.id) }}">Edit</a></button>
+  <br>
+  <p>{{ entry.markdown|safe }}</p>
+</section>
+
+{% endblock %}

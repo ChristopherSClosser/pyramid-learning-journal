@@ -1,0 +1,56 @@
+For Heroku:
+    enables use of https and serving css
+    in production:
+    - change [app:main] to [app:pyramid_learning_journal]
+    - above [server:main]add:
+        [filter:paste_prefix]
+        use = egg:PasteDeploy#prefix
+
+        [pipeline:main]
+        pipeline =
+            paste_prefix
+            pyramid_learning_journal
+
+    in requirements add:
+        psycopg2==2.7.3
+        pytest==3.2.3
+
+add environment variable in env/env/bin/activate
+DATABASE_URL='postgres://postgres:1234@localhost:5432/learning_journal'
+
+in dev.ini and production.ini add
+sqlalchemy=DATABASE_URL
+
+add to __init__
+settings["sqlalchemy.url"] = os.environ["DATABASE_URL"]
+<p>For Heroku:</p>
+<ul>
+  <p>enables use of https and serving css</p><br>
+  <p>in production:</p>
+    <ul>
+      <p>- change [app:main] to [app:pyramid_learning_journal]</p><br>
+      <p>- above [server:main]add:</p>
+      <ul>
+        <p>[filter:paste_prefix]</p><br>
+        <p>use = egg:PasteDeploy#prefix</p>
+        <br>
+        <p>[pipeline:main]</p><br>
+        <p>pipeline =</p>
+          <ul>
+            <p>paste_prefix</p><br>
+            <p>pyramid_learning_journal</p>
+            <br>
+          </ul>
+      </ul>
+    </ul>
+  <p>in requirements add:</p>
+    <ul>
+      <p>psycopg2==2.7.3</p><br>
+      <p>pytest==3.2.3</p>
+    </ul>
+  <p>add environment variable in env/env/bin/activate <br>
+  DATABASE_URL='postgres://postgres:1234@localhost:5432/learning_journal'
+</p><br>
+  <p>in dev.ini and production.ini add <br>
+  sqlalchemy=DATABASE_URL</p>
+</ul>

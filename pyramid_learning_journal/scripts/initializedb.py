@@ -16,6 +16,8 @@ from ..models import (
     get_tm_session,
     )
 from ..models import MyModel
+from entries import ENTRIES
+from datetime import datetime
 
 
 def usage(argv):
@@ -32,14 +34,21 @@ def main(argv=sys.argv):
     options = parse_vars(argv[2:])
     setup_logging(config_uri)
     settings = get_appsettings(config_uri, options=options)
+    settings['sqlalchemy.url'] = os.environ.get('DATABASE_URL', '')
 
     engine = get_engine(settings)
+    Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
     session_factory = get_session_factory(engine)
-
     with transaction.manager:
         dbsession = get_tm_session(session_factory, transaction.manager)
-
-        model = MyModel(name='one', value=1)
-        dbsession.add(model)
+        many_entries = []
+        for entry in ENTRIES:
+            new_entry = MyModel(
+            title=entry["title"],
+            markdown=entry["markdown"],
+            created=entry["created"],
+            )
+            many_entries.append(new_entry)
+            dbsession.add_all(many_entries)
