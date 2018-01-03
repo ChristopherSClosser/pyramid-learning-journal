@@ -5,15 +5,15 @@ __pycache__/
 
 # C extensions
 *.so
-*.swo
-
-# Ignore contents but keep folder
-django_imager/MEDIA/*
-!django_imager/MEDIA/.gitkeep
 
 # Distribution / packaging
 .Python
 env/
+
+*~
+ENV*
+.coverage
+coverage.xml
 build/
 develop-eggs/
 dist/
