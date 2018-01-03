@@ -5,15 +5,7 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <title>Learning Journal</title>
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker" rel="stylesheet">
-    <!-- <link rel="stylesheet" -->
-          <!-- href="${request.static_url('static/base.css')}"/> -->
-    <!-- <link rel="stylesheet" href="./layout.css">
-    <link rel="stylesheet" href="./modules.css">
-    <link rel="stylesheet" href="./base.css"> -->
-    <!-- <script type="text/javascript" src="script/app.js"></script> -->
-    <!-- <link href="{{request.static_url('pyramid_learning_journal:static/base.css')}}" rel="stylesheet">
-    <link href="{{request.static_url('pyramid_learning_journal:static/layout.css')}}" rel="stylesheet">
-    <link href="{{request.static_url('pyramid_learning_journal:static/modules.css')}}" rel="stylesheet"> -->
+    <link href="./static/theme.css" rel="stylesheet">
   </head>
   <body>
     <header class="header">
@@ -27,28 +19,27 @@
           <hr>
           <li><a id="github"href="/journal/new-entry">New Entry</a></li>
           <hr>
-          <li><a id="gallery" href="/journal/{id:\d+}">Detail</a></li>
+          <li><a id="gallery" href="/journal/1">Detail</a></li>
           <hr>
-          <li><a id="me" href="/journal/{id:\d+}/edit-entry">Edit</a></li>
+          <li><a id="me" href="/journal/edit-entry">Edit</a></li>
           <hr>
         </ul>
       </nav>
     </header>
     <div class="entries">
-      <ul>
-        <li>
-          <h2>Day 12</h2>
-          <h3>Today I learned:</h3>
-          <ul>
-            <li>Binary heap min and max</li>
-            <li>Start to Implement max heap</li>
-            <li>Using jinja2 templates</li>
-            <li>MVC</li>
-            <li>Pyramid Renderers</li>
-            <li>Group project selection</li>
-          </ul>
-        </li>
-      </ul>
+      <section>
+
+        <h2>Day 12</h2>
+        <h3>Today I learned:</h3>
+        <ul>
+          <li>Binary heap min and max</li>
+          <li>Start to Implement max heap</li>
+          <li>Using jinja2 templates</li>
+          <li>MVC</li>
+          <li>Pyramid Renderers</li>
+          <li>Group project selection</li>
+        </ul>
+      </section>
 
     </div>
   </body>

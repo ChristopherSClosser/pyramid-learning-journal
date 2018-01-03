@@ -1,18 +1,19 @@
+"""Entry model."""
+
 from sqlalchemy import (
     Column,
-    Index,
     Integer,
     Text,
+    Date
 )
-
 from .meta import Base
 
 
 class MyModel(Base):
-    __tablename__ = 'models'
+    """Entry class."""
+
+    __tablename__ = 'entries'
     id = Column(Integer, primary_key=True)
-    name = Column(Text)
-    value = Column(Integer)
-
-
-Index('my_index', MyModel.name, unique=True, mysql_length=255)
+    title = Column(Text)
+    markdown = Column(Text)
+    created = Column(Date)

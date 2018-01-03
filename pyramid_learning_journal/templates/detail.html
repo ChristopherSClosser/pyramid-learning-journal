@@ -3,16 +3,38 @@
   <head>
     <meta charset="utf-8">
     <title>Entry Detail</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker" rel="stylesheet">
+    <link href="../static/theme.css" rel="stylesheet">
   </head>
   <body>
-    <p>### Today I learned:<br>
-      - Binary heap min and max<br>
-        - Start to Implement max heap<br>
-      - Using jinja2 templates<br>
-      - MVC<br>
-      - Pyramid Renderers<br>
-      - Group project selection<br>
-    </p>
-
+    <header class="header">
+      <div class="my-name">
+        Learning Journal:
+      </div>
+      <button class="burger">&#9776;</button>
+      <nav class="hidden main-nav" id="main-nav">
+        <ul>
+          <li><a id="home"href="/">Home</a></li>
+          <hr>
+          <li><a id="github"href="/journal/new-entry">New Entry</a></li>
+          <hr>
+          <li><a id="gallery" href="/journal/1">Detail</a></li>
+          <hr>
+          <li><a id="me" href="/journal/edit-entry">Edit</a></li>
+          <hr>
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <p> Today I learned:<br>
+        - Binary heap min and max<br>
+          - Start to Implement max heap<br>
+        - Using jinja2 templates<br>
+        - MVC<br>
+        - Pyramid Renderers<br>
+        - Group project selection<br>
+      </p>
+    </section>
   </body>
 </html>
