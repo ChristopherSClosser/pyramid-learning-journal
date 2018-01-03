@@ -1,35 +1,80 @@
 # pyramid-learning-journal
-CodeFellows Python Daily Learning Journal
+---
+### Description
+Version: *0.1*
 
-https://csc-learning-journal.herokuapp.com/
+pyramid-learning-journal
 
-Getting Started
----------------
+### Authors
+---
+* https://github.com/ChristopherSClosser/pyramid-learning-journal
 
-- Change directory into your newly created project.
+### Dependencies
+---
+* paster
+* models
+* deploy
+* common
+* response
+* waitress
+* config
+* transaction
+* view
 
-    cd pyramid_learning_journal
+### Getting Started
+---
+##### *Prerequisites*
+* [python (3.6+)](https://www.python.org/downloads/)
+* [pip](https://pip.pypa.io/en/stable/)
+* [git](https://git-scm.com/)
 
-- Create a Python virtual environment.
+##### *Installation*
+First, clone the project repo from Github. Then, change directories into the cloned repository. To accomplish this, execute these commands:
 
-    python3 -m venv env
+`$ git clone https://github.com/ChristopherSClosser/pyramid-learning-journal.git`
 
-- Upgrade packaging tools.
+`$ cd pyramid-learning-journal`
 
-    env/bin/pip install --upgrade pip setuptools
+Now now that you have cloned your repo and changed directories into the project, create a virtual environment named "ENV", and install the project requirements into your VE.
 
-- Install the project in editable mode with its testing requirements.
+`$ python3 -m venv ENV`
 
-    env/bin/pip install -e ".[testing]"
+`$ source ENV/bin/activate`
 
-- Configure the database.
+`$ pip install -r requirements.txt`
 
-    env/bin/initialize_pyramid_learning_journal_db development.ini
+`$ pserve development.ini`
 
-- Run your project's tests.
+Open your browser to http://localhost:6543
 
-    env/bin/pytest
+### Test Suite
+---
+##### *Running Tests*
+This application uses [pytest](https://docs.pytest.org/en/latest/) as a testing suite. To run tests, run:
 
-- Run your project.
+``$ pytest``
 
-    env/bin/pserve development.ini
+To view test coverage, run:
+
+``$ pytest --cov``
+##### *Test Files*
+The testing files for this project are:
+
+| File Name | Description |
+|:---:|:---:|
+| `./pyramid_learning_journal/tests.py` | Journal tests. |
+
+### Development Tools
+---
+* *python* - programming language
+* *psycopg2* - DB management system
+* *pyramid* - web framework
+
+### License
+---
+This project is licensed under MIT License - see the LICENSE.md file for details.
+### Acknowledgements
+---
+* Coffee
+
+*This README was generated using [writeme.](https://github.com/chelseadole/write-me)*
