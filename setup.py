@@ -1,3 +1,5 @@
+"""Setup for Pyramid Learning Journal."""
+
 import os
 
 from setuptools import setup, find_packages
@@ -9,17 +11,17 @@ with open(os.path.join(here, 'CHANGES.txt')) as f:
     CHANGES = f.read()
 
 requires = [
-    'plaster_pastedeploy',
-    'pyramid >= 1.9a',
-    'pyramid_debugtoolbar',
+    'pyramid',
     'pyramid_jinja2',
-    'pyramid_retry',
+    'pyramid_debugtoolbar',
     'pyramid_tm',
     'SQLAlchemy',
     'transaction',
     'zope.sqlalchemy',
-    'psycopg2',  # add from class
-    'waitress'
+    'waitress',
+    'ipython',
+    'pyramid_ipython',
+    'psycopg2'
 ]
 
 tests_require = [
