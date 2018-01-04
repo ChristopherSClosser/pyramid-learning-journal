@@ -1,0 +1,3 @@
+[run]
+include = pyramid_learning_journal/models/mymodel.py,
+          pyramid_learning_journal/views/default.py,
