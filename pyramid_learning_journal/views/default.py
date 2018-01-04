@@ -1,10 +1,11 @@
 """Views for learning journal."""
-import os
-from pyramid.httpexceptions import HTTPFound
+from pyramid.httpexceptions import HTTPNotFound, HTTPFound
 from pyramid.response import Response
 from pyramid.view import view_config
 from ..data.entries import ENTRIES
-import io
+from ..models import MyModel
+import datetime
+import os
 
 HERE = os.path.dirname(__file__)
 
@@ -12,19 +13,19 @@ HERE = os.path.dirname(__file__)
 @view_config(route_name='home', renderer='../templates/home.jinja2')
 def list_view(request):
     """Display the list of entries."""
-    return {
-            'page': 'home',
-            'entries': ENTRIES
-           }
+    query = request.dbsession.query(MyModel)
+    entries = query.order_by(MyModel.created.desc()).all()
+    return {'entries': entries}
 
 
 @view_config(route_name='detail', renderer='../templates/detail.jinja2')
 def detail_view(request):
     """Display a detail view of entry."""
     ident = int(request.matchdict['id'])
-    for entry in ENTRIES:
-        if entry['id'] == ident:
-            return {'entry': entry}
+    entry = request.dbsession.query(MyModel).get(ident)
+    if not entry:
+        raise HTTPNotFound
+    return {"entry": entry}
 
 
 @view_config(route_name='new', renderer='../templates/entry.jinja2')
@@ -37,6 +38,7 @@ def create_view(request):
 def update_view(request):
     """Display the update entry."""
     ident = int(request.matchdict['id'])
-    for entry in ENTRIES:
-        if entry['id'] == ident:
-            return {'entry': entry}
+    entry = request.dbsession.query(MyModel).get(ident)
+    if not entry:
+        raise HTTPNotFound
+    return {"entry": entry}
