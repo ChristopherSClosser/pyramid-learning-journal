@@ -97,11 +97,16 @@ This project is licensed under MIT License - see the LICENSE.md file for details
 *This README was generated using [writeme.](https://github.com/chelseadole/write-me)*
 
 <pre>
+//
+--------------STEP3 TESTING---------------
+//
+//
 (ENV)[chris-Studio-1558]~/CodeFellows/python/pyramid-learning-journal[step3 !?]:
 $ pytest --cov --cov-report term-missing
 ============================= test session starts ==============================
 platform linux -- Python 3.5.2, pytest-3.3.1, py-1.5.2, pluggy-0.6.0
-rootdir: /home/chris/CodeFellows/python/pyramid-learning-journal, inifile: pytest.ini
+rootdir: /home/chris/CodeFellows/python/pyramid-learning-journal,
+inifile: pytest.ini
 plugins: cov-2.5.1
 collected 26 items
 pyramid_learning_journal/tests.py..........................             [100%]
@@ -112,4 +117,25 @@ pyramid_learning_journal/models/mymodel.py       8      0  100%
 pyramid_learning_journal/views/default.py       26      0  100%
 TOTAL                                           34      0  100%
 ========================== 26 passed in 4.15 seconds ===========================
+//
+//
+//
+-------------STEP4 TESTING------------
+//
+//
+(ENV) [chris-Studio-1558]~/CodeFellows/python/pyramid-learning-journal[step4]:
+$ pytest --cov --cov-report term-missing
+============================= test session starts ==============================
+platform linux -- Python 3.5.2, pytest-3.3.1, py-1.5.2, pluggy-0.6.0
+rootdir: /home/chris/CodeFellows/python/pyramid-learning-journal,
+inifile: pytest.ini
+plugins: cov-2.5.1
+collected 28 items
+pyramid_learning_journal/tests.py ............................    [100%]
+----------- coverage: platform linux, python 3.5.2-final-0 -----------
+Name                                         Stmts   Miss  Cover Missing
+pyramid_learning_journal/models/mymodel.py       8      0   100%
+pyramid_learning_journal/views/default.py       34      0   100%
+TOTAL                                           42      0   100%
+========================== 28 passed in 5.36 seconds ===========================
 <pre/>
