@@ -68,7 +68,8 @@ The testing files for this project are:
 | `./pyramid_learning_journal/tests.py` | None |
 
 
-<pre>(ENV)[chris-Studio-1558]~/CodeFellows/python/pyramid-learning-journal[step3 !?]:
+<pre>
+(ENV)[chris-Studio-1558]~/CodeFellows/python/pyramid-learning-journal[step3 !?]:
 $ pytest --cov --cov-report term-missing
 ============================= test session starts ==============================
 platform linux -- Python 3.5.2, pytest-3.3.1, py-1.5.2, pluggy-0.6.0
