@@ -2,7 +2,6 @@
 
 import os
 from pyramid import testing
-from pyramid.response import Response
 import unittest
 import pytest
 from bs4 import BeautifulSoup
@@ -10,7 +9,7 @@ from faker import Faker
 import datetime
 from pyramid.config import Configurator
 import transaction
-from pyramid.httpexceptions import HTTPNotFound, HTTPFound
+from pyramid.httpexceptions import HTTPNotFound
 from pyramid_learning_journal.models.meta import Base
 from pyramid_learning_journal.models import (
     MyModel,
@@ -33,13 +32,32 @@ class FunctionalTests(unittest.TestCase):
         app = main({})
         from webtest import TestApp
         self.testapp = TestApp(app)
-        # import pdb; pdb.set_trace()
         self.home = self.testapp.get('/')
         self.new_entry = self.testapp.get('/journal/new-entry')
         self.entry_detail = self.testapp.get('/journal/1')
         self.edit_entry = self.testapp.get('/journal/1/edit-entry')
+        self.new = self.testapp.post('/journal/new-entry', {
+            'title': 'test title',
+            'markdown': 'testing stuff'
+        })
+        self.update = self.testapp.post('/journal/1/edit-entry', {
+            'title': 'test title update',
+            'markdown': 'testing stuff update'
+        })
 
-    def test_home_view_200(self):
+    def tearDown(self):
+        """."""
+        testing.tearDown()
+
+    def test_post_entry_status_302(self):
+        """test_post_entry."""
+        assert self.new.status == '302 Found'
+
+    def test_update_entry_status_302(self):
+        """test_update_entry_status_302."""
+        assert self.update.status == '302 Found'
+
+    def test_home_view_status_200(self):
         """test_new_entry_view_200."""
         assert self.home.status_code == 200
 
@@ -55,9 +73,9 @@ class FunctionalTests(unittest.TestCase):
         for item in res:
             if item == 'section':
                 extyp.append(item)
-        assert len(extyp) == 24
+        assert len(extyp) > 1
 
-    def test_new_entry_view_200(self):
+    def test_new_entry_view_status_200(self):
         """test_new_entry_view_200."""
         assert self.new_entry.status_code == 200
 
@@ -65,7 +83,7 @@ class FunctionalTests(unittest.TestCase):
         """test_new_entry_route_contains_heading."""
         assert b'<h2>Add a new entry:</h2>' in self.new_entry.body
 
-    def test_entry_detail_view_200(self):
+    def test_entry_detail_view_status_200(self):
         """test_entry_detail_view_200."""
         assert self.entry_detail.status_code == 200
 
@@ -79,7 +97,7 @@ class FunctionalTests(unittest.TestCase):
                 extyp.append(item)
         assert len(extyp) == 1
 
-    def test_entry_detail_view_has_single_entry(self):
+    def test_entry_detail_view_has_proper_entry(self):
         """test_entry_detail_view_has_single_entry."""
         html = BeautifulSoup(self.entry_detail.body, 'html.parser')
         assert len(html.section) == 4
@@ -89,7 +107,7 @@ class FunctionalTests(unittest.TestCase):
         extyp = '<p>Created'
         assert extyp in self.entry_detail
 
-    def test_edit_entry_view_200(self):
+    def test_edit_entry_view_status_200(self):
         """test_edit_entry_view_200."""
         assert self.edit_entry.status_code == 200
 
@@ -112,7 +130,7 @@ def test_home_route_get_no_entries_has_no_sections(testapp):
     assert not content.findChildren()
 
 
-def test_home_route_get_no_entries_has_sections(testapp, fill_my_database):
+def test_home_route_has_sections(testapp, fill_my_database):
     """One section."""
     response = testapp.get('/')
     html = response.html
@@ -120,7 +138,10 @@ def test_home_route_get_no_entries_has_sections(testapp, fill_my_database):
     assert len(content) == 1
 
 
-def test_home_route_with_many_entries_has_sections(testapp, fill_my_other_database):
+def test_home_route_with_many_entries_has_sections(
+    testapp,
+    fill_my_other_database
+):
     """Ton of entries."""
     response = testapp.get('/')
     html = response.html
@@ -151,7 +172,7 @@ def test_home_with_many_entries(testapp, fill_my_other_database):
     assert len(content) == 42
 
 
-def test_add_new_entry_200(testapp, dummy_request):
+def test_add_new_entry_status_200(testapp, dummy_request):
     """New entry == 200."""
     dummy_request.method = testapp.get('/journal/new-entry')
     assert dummy_request.response.status == '200 OK'
@@ -233,8 +254,10 @@ def testapp(request):
         config.include('pyramid_jinja2')
         config.include('.models')
         config.include('.routes')
-        config.add_static_view(name='static',
-                               path='pyramid_learning_journal:static')
+        config.add_static_view(
+            name='static',
+            path='pyramid_learning_journal:static'
+        )
         config.scan()
         return config.make_wsgi_app()
 
@@ -300,14 +323,14 @@ def test_update_view_returns_dict_with_db(dummy_req, db_session):
     assert type(response) == dict
 
 
-def test_detail_view_with_id_raises_except(dummy_req):
+def test_detail_view_with_wrong_id_raises_404(dummy_req):
     """Test proper error raising with non matching id on detail view."""
     dummy_req.matchdict['id'] = '9000'
     with pytest.raises(HTTPNotFound):
         detail_view(dummy_req)
 
 
-def test_update_view_with_id_raises_except(dummy_req):
+def test_update_view_with_wrong_id_raises_404(dummy_req):
     """Test proper error raising with non matching id on update view."""
     dummy_req.matchdict['id'] = '9000'
     with pytest.raises(HTTPNotFound):

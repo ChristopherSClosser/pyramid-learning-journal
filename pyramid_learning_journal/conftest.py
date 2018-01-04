@@ -1,7 +1,6 @@
 """Setup for tests."""
 
 from pyramid.config import Configurator
-from pyramid.testing import DummyRequest
 from pyramid_learning_journal.models.meta import Base
 from pyramid import testing
 import pytest
@@ -11,9 +10,13 @@ import datetime
 
 
 def main(global_config, **settings):
+    """."""
     settings['sqlalchemy.url'] = os.environ.get('TEST_DATABASE')
     config = Configurator(settings=settings)
-    config.add_static_view(name='static', path='pyramid_learning_journal:static')
+    config.add_static_view(
+        name='static',
+        path='pyramid_learning_journal:static'
+    )
     config.include('pyramid_jinja2')
     config.include('pyramid_learning_journal.routes')
     config.include('pyramid_learning_journal.models')
@@ -40,6 +43,7 @@ def testapp(request):
 
 @pytest.fixture
 def fill_my_database(testapp):
+    """Database with entries."""
     SessionFactory = testapp.app.registry["dbsession_factory"]
     session = SessionFactory()
     new_entry = MyModel(
@@ -53,15 +57,17 @@ def fill_my_database(testapp):
 
 @pytest.fixture
 def fill_my_other_database(testapp):
+    """Database with more entries."""
     import faker
     FAKE = faker.Faker()
     SessionFactory = testapp.app.registry["dbsession_factory"]
     session = SessionFactory()
     allentries = []
     for i in range(20):
-        allentries.append(
-            MyModel(title=FAKE.text(20), markdown=FAKE.text(200))
-        )
+        allentries.append(MyModel(
+            title=FAKE.text(20),
+            markdown=FAKE.text(200)
+        ))
     session.add_all(allentries)
     session.commit()
 
@@ -69,6 +75,7 @@ def fill_my_other_database(testapp):
 @pytest.fixture
 def dummy_request(testapp):
     """Instantiate a fake HTTP Request.
+
     complete with a database session.
     This is a function-level fixture, so every new request will have a
     new database session.
