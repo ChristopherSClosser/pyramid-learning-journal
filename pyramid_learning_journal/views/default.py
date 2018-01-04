@@ -1,8 +1,7 @@
 """Views for learning journal."""
+
 from pyramid.httpexceptions import HTTPNotFound, HTTPFound
-from pyramid.response import Response
 from pyramid.view import view_config
-from ..data.entries import ENTRIES
 from ..models import MyModel
 import datetime
 import os
@@ -31,8 +30,6 @@ def detail_view(request):
 @view_config(route_name='new', renderer='../templates/entry.jinja2')
 def create_view(request):
     """Display create a list entry."""
-    if request.GET:
-        return {}
     if request.POST:
         entry = MyModel(
             title=request.POST["title"],
@@ -49,6 +46,8 @@ def update_view(request):
     """Display the update entry."""
     ident = int(request.matchdict["id"])
     entry = request.dbsession.query(MyModel).get(ident)
+    if not entry:
+        raise HTTPNotFound
     if request.POST:
         entry.title = request.POST["title"]
         entry.markdown = request.POST["markdown"]
