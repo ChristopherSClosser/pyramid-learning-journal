@@ -8,10 +8,8 @@ from bs4 import BeautifulSoup
 from faker import Faker
 import datetime
 from pyramid.config import Configurator
-import psycopg2
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import transaction
-from pyramid.httpexceptions import HTTPNotFound, HTTPFound
+from pyramid.httpexceptions import HTTPNotFound
 from pyramid_learning_journal.models.meta import Base
 from pyramid_learning_journal.models import (
     MyModel,
@@ -42,14 +40,22 @@ class FunctionalTests(unittest.TestCase):
             'title': 'test title',
             'markdown': 'testing stuff'
         })
+        self.update = self.testapp.post('/journal/1/edit-entry', {
+            'title': 'test title update',
+            'markdown': 'testing stuff update'
+        })
 
     def tearDown(self):
         """."""
         testing.tearDown()
 
-    def test_post_entry_(self):
+    def test_post_entry_status_302(self):
         """test_post_entry."""
         assert self.new.status == '302 Found'
+
+    def test_update_entry_status_302(self):
+        """test_update_entry_status_302."""
+        assert self.update.status == '302 Found'
 
     def test_home_view_200(self):
         """test_new_entry_view_200."""
