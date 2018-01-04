@@ -57,7 +57,7 @@ class FunctionalTests(unittest.TestCase):
         """test_update_entry_status_302."""
         assert self.update.status == '302 Found'
 
-    def test_home_view_200(self):
+    def test_home_view_status_200(self):
         """test_new_entry_view_200."""
         assert self.home.status_code == 200
 
@@ -75,7 +75,7 @@ class FunctionalTests(unittest.TestCase):
                 extyp.append(item)
         assert len(extyp) > 1
 
-    def test_new_entry_view_200(self):
+    def test_new_entry_view_status_200(self):
         """test_new_entry_view_200."""
         assert self.new_entry.status_code == 200
 
@@ -83,7 +83,7 @@ class FunctionalTests(unittest.TestCase):
         """test_new_entry_route_contains_heading."""
         assert b'<h2>Add a new entry:</h2>' in self.new_entry.body
 
-    def test_entry_detail_view_200(self):
+    def test_entry_detail_view_status_200(self):
         """test_entry_detail_view_200."""
         assert self.entry_detail.status_code == 200
 
@@ -97,7 +97,7 @@ class FunctionalTests(unittest.TestCase):
                 extyp.append(item)
         assert len(extyp) == 1
 
-    def test_entry_detail_view_has_single_entry(self):
+    def test_entry_detail_view_has_proper_entry(self):
         """test_entry_detail_view_has_single_entry."""
         html = BeautifulSoup(self.entry_detail.body, 'html.parser')
         assert len(html.section) == 4
@@ -107,7 +107,7 @@ class FunctionalTests(unittest.TestCase):
         extyp = '<p>Created'
         assert extyp in self.entry_detail
 
-    def test_edit_entry_view_200(self):
+    def test_edit_entry_view_status_200(self):
         """test_edit_entry_view_200."""
         assert self.edit_entry.status_code == 200
 
@@ -130,7 +130,7 @@ def test_home_route_get_no_entries_has_no_sections(testapp):
     assert not content.findChildren()
 
 
-def test_home_route_get_no_entries_has_sections(testapp, fill_my_database):
+def test_home_route_has_sections(testapp, fill_my_database):
     """One section."""
     response = testapp.get('/')
     html = response.html
@@ -172,7 +172,7 @@ def test_home_with_many_entries(testapp, fill_my_other_database):
     assert len(content) == 42
 
 
-def test_add_new_entry_200(testapp, dummy_request):
+def test_add_new_entry_status_200(testapp, dummy_request):
     """New entry == 200."""
     dummy_request.method = testapp.get('/journal/new-entry')
     assert dummy_request.response.status == '200 OK'
@@ -323,26 +323,15 @@ def test_update_view_returns_dict_with_db(dummy_req, db_session):
     assert type(response) == dict
 
 
-def test_detail_view_with_id_raises_except(dummy_req):
+def test_detail_view_with_wrong_id_raises_404(dummy_req):
     """Test proper error raising with non matching id on detail view."""
     dummy_req.matchdict['id'] = '9000'
     with pytest.raises(HTTPNotFound):
         detail_view(dummy_req)
 
 
-def test_update_view_with_id_raises_except(dummy_req):
+def test_update_view_with_wrong_id_raises_404(dummy_req):
     """Test proper error raising with non matching id on update view."""
     dummy_req.matchdict['id'] = '9000'
     with pytest.raises(HTTPNotFound):
         update_view(dummy_req)
-
-
-# def test_teardown():
-#     """."""
-#     def run_sql(sql):
-#         conn = psycopg2.connect(database='postgres')
-#         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-#         cur = conn.cursor()
-#         cur.execute(sql)
-#         conn.close()
-#     run_sql('DROP DATABASE testdb')
