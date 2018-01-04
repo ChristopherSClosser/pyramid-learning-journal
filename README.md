@@ -67,6 +67,7 @@ The testing files for this project are:
 |:---:|:---:|
 | `./pyramid_learning_journal/tests.py` | None |
 
+
 <pre>(ENV)[chris-Studio-1558]~/CodeFellows/python/pyramid-learning-journal[step3 !?]:
 $ pytest --cov --cov-report term-missing
 ============================= test session starts ==============================
@@ -83,6 +84,7 @@ pyramid_learning_journal/views/default.py       26      0  100%
 TOTAL                                           34      0  100%
 ========================== 26 passed in 4.15 seconds ===========================
 <pre/>
+
 
 ### URLs
 ---
