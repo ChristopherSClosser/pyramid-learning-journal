@@ -12,7 +12,10 @@ HERE = os.path.dirname(__file__)
 @view_config(route_name='home', renderer='../templates/home.jinja2')
 def list_view(request):
     """Display the list of entries."""
-    return {'entries': ENTRIES}
+    return {
+            'page': 'home',
+            'entries': ENTRIES
+           }
 
 
 @view_config(route_name='detail', renderer='../templates/detail.jinja2')
