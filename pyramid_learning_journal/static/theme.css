@@ -223,13 +223,14 @@ img {
 }
 
 .list {
-
+  display: block;
 }
 
 .header {
   height: 50px;
   background-color: hsla(24, 67%, 57%, 1);
   position: fixed;
+  left: 0;
   top: 0;
   width: 100%;
   z-index: 99999999;
@@ -266,7 +267,20 @@ section > button {
   vertical-align: middle;
 }
 
+.text {
+  width: 100%;
+  display: grid;
+}
+
 textarea {
-  width: 200%;
+  width: 100%;
+  max-width: 650px;
   height: 10em;
+}
+
+body {
+  margin: 0;
+  line-height: 1;
+  padding: 0;
+  border: 0;
 }
