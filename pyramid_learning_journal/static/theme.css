@@ -223,7 +223,7 @@ img {
 }
 
 .list {
-
+  display: block;
 }
 
 .header {
