@@ -5,7 +5,7 @@ Version: *0.4*
 
 pyramid-learning-journal
 
-### Authors
+### Author
 ---
 * https://github.com/ChristopherSClosser/pyramid-learning-journal
 
