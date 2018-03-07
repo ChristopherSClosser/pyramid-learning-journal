@@ -34,7 +34,6 @@ def detail_view(request):
     renderer='../templates/entry.jinja2',
     permission='secret',
 )
-# @forbidden_view_config(renderer='../templates/nonentry.jinja2')
 def create_view(request):
     """Display create a list entry."""
     if request.POST:
@@ -53,7 +52,6 @@ def create_view(request):
     renderer='../templates/edit.jinja2',
     permission='secret',
 )
-# @forbidden_view_config(renderer='../templates/nonedit.jinja2')
 def update_view(request):
     """Display the update entry."""
     ident = int(request.matchdict["id"])
