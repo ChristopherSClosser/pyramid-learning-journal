@@ -1,8 +1,9 @@
 """Views for learning journal."""
 
-from pyramid.security import NO_PERMISSION_REQUIRED
+from pyramid.security import remember, forget, NO_PERMISSION_REQUIRED
 from pyramid.httpexceptions import HTTPNotFound, HTTPFound
-from pyramid.view import view_config
+from pyramid.view import view_config, forbidden_view_config
+from pyramid_learning_journal.security import is_authenticated
 from ..models import MyModel
 import datetime
 import os
@@ -28,7 +29,12 @@ def detail_view(request):
     return {"entry": entry}
 
 
-@view_config(route_name='new', renderer='../templates/entry.jinja2')
+@view_config(
+    route_name='new',
+    renderer='../templates/entry.jinja2',
+    permission='secret',
+)
+# @forbidden_view_config(renderer='../templates/nonentry.jinja2')
 def create_view(request):
     """Display create a list entry."""
     if request.POST:
@@ -42,7 +48,12 @@ def create_view(request):
     return {}
 
 
-@view_config(route_name='edit', renderer='../templates/edit.jinja2')
+@view_config(
+    route_name='edit',
+    renderer='../templates/edit.jinja2',
+    permission='secret',
+)
+# @forbidden_view_config(renderer='../templates/nonedit.jinja2')
 def update_view(request):
     """Display the update entry."""
     ident = int(request.matchdict["id"])
@@ -60,3 +71,25 @@ def update_view(request):
         "markdown": entry.markdown
     }
     return {"entry": form_fill}
+
+
+@view_config(route_name='login', renderer='../templates/login.jinja2')
+@forbidden_view_config(renderer='../templates/nonentry.jinja2')
+def login(request):
+    """."""
+    if request.method == 'GET':
+        return {}
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        if is_authenticated(username, password):
+            headers = remember(request, username)
+            return HTTPFound(request.route_url('home'), headers=headers)
+        return {}
+
+
+@view_config(route_name='logout')
+def logout(request):
+    """."""
+    headers = forget(request)
+    return HTTPFound(request.route_url('home'), headers=headers)

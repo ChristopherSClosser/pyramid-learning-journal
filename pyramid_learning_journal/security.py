@@ -7,37 +7,45 @@ from pyramid.security import Everyone, Authenticated
 from pyramid.security import Allow
 from passlib.apps import custom_app_context as pwd_context
 
-#
-# def check_credentials(username, password):
+
+# def is_authenticated(username, password):
 #     """."""
-#     stored_username = os.environ.get('AUTH_USERNAME', '')
-#     stored_password = os.environ.get('AUTH_PASSWORD', '')
-#     is_authenticated = False
-#     if stored_username and stored_password:
-#         if username == stored_username:
-#             try:
-#                 is_authenticated = pwd_context.verify(
-#                     password,
-#                     stored_password
-#                 )
-#             except ValueError:
-#                 pass
-#     return is_authenticated
-#
-#
-# class MyRoot(object):
-#     """."""
-#
-#     def __init__(self, request):
-#         """."""
-#         self.request = request
-#
-#     __acl__ = [
-#         (Allow, Everyone, 'view'),
-#         (Allow, Authenticated, 'secret'),
-#     ]
-#
-#
+#     return (
+#         username == os.environ.get('username', '')
+#         and os.environ.get('password', '')
+#     )
+
+
+def is_authenticated(username, password):
+    """."""
+    stored_username = os.environ.get('AUTH_USERNAME', '')
+    stored_password = os.environ.get('AUTH_PASSWORD', '')
+    is_authenticated = False
+    if stored_username and stored_password:
+        if username == stored_username:
+            try:
+                is_authenticated = pwd_context.verify(
+                    password,
+                    stored_password
+                )
+            except ValueError:
+                pass
+    return is_authenticated
+
+
+class MyRoot(object):
+    """."""
+
+    def __init__(self, request):
+        """."""
+        self.request = request
+
+    __acl__ = [
+        (Allow, Everyone, 'view'),
+        (Allow, Authenticated, 'secret'),
+    ]
+
+
 def includeme(config):
     """Security-related configuration."""
     auth_secret = os.environ.get('AUTH_SECRET', '')
