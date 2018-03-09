@@ -16,9 +16,12 @@
       <textarea type="text" name="markdown"></textarea>
     </p>
     <br>
-    <p>
-      <input type="submit" name="Add Entry">
-    </p>
+    <div class="noauth">
+      <img class="x" src="{{request.static_url('pyramid_learning_journal:static/x.jpg')}}" alt="x">
+      <p class="subtitle">
+        You are not authenticated...<br>You may not add or edit an entry.
+      </p>
+    </div>
   </form>
 </section>
 
