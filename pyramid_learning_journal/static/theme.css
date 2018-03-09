@@ -1,70 +1,16 @@
 /*some css for mobile view*/
 
-html {
-    font-family: 'Permanent Marker', sans-serif;
-    font-weight: lighter;
-    font-size: 1.5em;
-    background-color: #81766a;
-}
-
-figure {
-    display: block;
-}
-
-h3 {
-    font-weight: bold;
-}
-
-li {
-    /*list-style: none;*/
-    color: #81766a;
-}
-
-li p {
-    text-align: left;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-li p {
-    font-family: 'Amatic SC', sans-serif;
-    font-weight: bold;
-    font-size: 1.1em;
-}
-
-content p {
-    font-family: 'Amatic SC', sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-    color: #6d6464;
-    display: inline-block;
-}
-
-h1 a:hover {
-    color: black;
-}
-
-h3 a:hover {
-    color: #81766a;
-}
-
-li h3:hover {
-    color: black;
-}
-
-img {
-    width: 70%;
-    margin-top: 2%;
-}
+/* -------------------------------------------------------------------------- */
 .gallery {
     position: absolute;
     top: 4%;
     z-index: -1;
 }
 
+.entry-title {
+  font-size: 1.75rem;
+    font-style: oblique;
+}
 
 .gallery li img {
     display: block;
@@ -89,7 +35,7 @@ img {
     border: 1px solid black;
     text-align: center;
     padding: 4%;
-    background-color: hsla(24, 67%, 57%, 1);
+    background-color: #f1f1f1;
 }
 
 .my-name {
@@ -109,6 +55,15 @@ img {
     display: none;
 }
 
+.nav-down {
+    height: 50px;
+    background-color: hsla(24, 67%, 57%, 1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
 
 .foot {
     font-size: .5em;
@@ -117,6 +72,8 @@ img {
 .burger {
     font-size: 32px;
     float: right;
+    margin-top: -0.1rem;
+    padding-right: 0;
     background-color: Transparent;
     background-repeat: no-repeat;
     border: none;
@@ -126,10 +83,72 @@ img {
     transform: translateY(10%);
 }
 
+.break {
+  position: absolute;
+  right: 0px;
+  height: 1em;
+  width: 100%;
+  background-color: #807669;
+  margin-top: -0.3%;
+}
+
+.date{
+  text-align: center;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.subtitle {
+  font-family: 'Dosis', sans-serif;
+  font-style: italic;
+  margin-left: .7rem;
+  margin-right: .7rem;
+  font-size: 22px;
+}
+
+ul.plain {
+  margin-left: 5rem;
+}
+
+.linked {
+  position: absolute;
+  margin-top: 0;
+  right: 2.5rem;
+  top: 0.2rem;
+
+}
+.ilinked {
+  width: 2.3rem;
+  z-index: 9999;
+}
+
+.ckata {
+  position: absolute;
+  margin-top: -1.4rem;
+  right: 0.5rem;
+  /* left: 173px; */
+  /* margin-left: 6%; */
+}
+.kata {
+  height: .4rem;
+}
+.plain {
+  font-family: 'Arial Narrow',sans-serif;
+  font-weight: lighter;
+  text-align: left;
+  margin-left: .7rem;
+  margin-right: .7rem;
+  font-size: 16px;
+}
+
+.nav-up {
+  top: -86px;
+}
+
 #project-list {
     float: right;
     margin-top: 2%;
-    /*list-style-type: none;*/
+    list-style-type: none;
     position: absolute;
 }
 
@@ -144,143 +163,59 @@ img {
     color: rgb(60, 45, 31);
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 670px) {
+  .ilinked {
+    width: 3rem;
+
+  }
+  .linked {
+    position: initial;
+    float: right;
+    margin-top: .5rem;
+  }
+
+  .ckata {
+    position: initial;
+    float: right;
+    margin-top: .5rem;
+  }
+  .kata {
+    height: .7rem;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 739px) {
     .project {
-        display: none;
+      display: none;
     }
     .burger {
-        display: none;
+      display: none;
+    }
+    .plain {
+      margin-left: 3rem;
+      margin-right: 3rem;
+      font-size: 18px;
+    }
+    .linked {
+      /* position: initial; */
     }
 }
 
 @media only screen and (min-width: 980px) {
     .projects, .github, .gallery li, .me {
-        margin-left: 13%;
-        margin-right: 13%;
+      margin-left: 13%;
+      margin-right: 13%;
     }
-}
-#main-nav li:hover {
-    color: black;
-}
-
-#main-nav li a:hover {
-    text-shadow: 0 0 5px #E5843A;
-}
-
-.me h1, .github h1 a {
-    text-shadow: 0 0 5px rgb(236, 246, 249);
-    color: rgb(60, 45, 31);
-}
-
-.me p {
-    color: rgb(60, 45, 31);
-}
-
-#main-nav ul {
-    display: block;
-    float: right;
-    list-style-type: none;
-    text-align: right;
-    font-weight: lighter;
-    ;
-    font-size: 0.8em;
-    background: #f1f1f1;
-    font-size: 18px;
-    margin: auto;
-    padding: 4%;
-    right: 0;
-}
-
-/*media query goes here for a screen larger than the min-width */
-@media only screen and (min-width: 500px) {
-    #main-nav {
-        display: inline-block;
-        height: .5em;
-        float: right;
-        width: 100%;
+    .plain {
+      margin-left: 3rem;
+      margin-right: 3rem;
+      font-size: 18px;
     }
-    #main-nav ul {
-        display: inline-block;
-        text-align: center;
-        padding: 0;
-        vertical-align: middle;
-        width: 100%;
-        border-top: .5em solid #81766a;
-        border-bottom: .5em solid #81766a;
+    .linked {
+      /* margin-left: 5%; */
     }
-    #main-nav li {
-        display: inline-block;
-        list-style-type: none;
-        margin-right: 2%;
+    .ckata {
+      /* margin-left: 5%; */
     }
-    #project-list, #project-list li, #project-list hr {
-        display: block;
-        margin: 1%;
-    }
-    .hidden hr {
-        display: none;
-    }
-}
-
-.list {
-  display: block;
-}
-
-.header {
-  height: 50px;
-  background-color: hsla(24, 67%, 57%, 1);
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 99999999;
-}
-
-.list > ul {
-  font-family: 'Amatic SC', sans-serif;
-  font-weight: bold;
-  /*position: absolute;
-  top: 20%;*/
-  list-style: square;
-  color: black;
-}
-
-.entries > li {
-  font-family: 'Amatic SC', sans-serif;
-
-  font-weight: bold;
-  position: absolute;
-  top: 20%;
-  color: black;
-}
-
-section {
-    margin: 2%;
-    margin-top: 2.6em;
-    border: 1px solid black;
-    text-align: left;
-    padding: 4%;
-    background-color: white;
-}
-
-section > button {
-  vertical-align: middle;
-}
-
-.text {
-  width: 100%;
-  display: grid;
-}
-
-textarea {
-  width: 100%;
-  max-width: 650px;
-  height: 10em;
-}
-
-body {
-  margin: 0;
-  line-height: 1;
-  padding: 0;
-  border: 0;
 }
