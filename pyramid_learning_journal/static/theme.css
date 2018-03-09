@@ -35,8 +35,15 @@
     z-index: -1;
 }
 
-section.list {
-  font-size: 0.5rem;
+.entries {
+  padding: 1rem;
+}
+
+section {
+  font-size: 0.6rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  overflow: overlay;
 }
 
 .mySlides {
@@ -180,8 +187,8 @@ ul.plain {
 @media only screen and (min-width: 670px) {
   .ilinked {
     width: 3rem;
-
   }
+
   section.list {
     font-size: 1rem;
   }
