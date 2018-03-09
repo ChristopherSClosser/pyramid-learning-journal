@@ -1,5 +1,34 @@
 'use strict';
 
+// hide and show nav when scrolling
+$(function(){
+  //Keep track of last scroll
+  var lastScroll = 0;
+  $(window).scroll(function(event){
+    //Sets the current scroll position
+    var st = $(this).scrollTop();
+    //Determines up-or-down scrolling
+    if (st > lastScroll){
+      //Replace this with your function call for downward-scrolling
+      // console.log('scrolling down');
+      $('.ckata').hide();
+      $('.linked').hide();
+      $('header').slideUp('fast');
+      // removeClass('nav-down').addClass('nav-up');
+    }
+    else {
+      //Replace this with your function call for upward-scrolling
+      // console.log('scrolling up');
+      $('header').slideDown('fast');
+      // removeClass('nav-up').addClass('nav-down');
+      $('.ckata').fadeIn('fast');
+      $('.linked').fadeIn('fast');
+    }
+    //Updates scroll position
+    lastScroll = st;
+  });
+});
+
 //function for mobile menu on page ready
 $(function(){
   // $('section').hide();

@@ -20,6 +20,16 @@
     background-repeat: no-repeat;
 }
 
+.noauth {
+  display: flex;
+}
+
+.noauth .x {
+  height: 1.5rem;
+  width: 1rem;
+  margin-top: 1.5rem;
+}
+
 .content {
     margin: auto;
     z-index: -1;

@@ -3,7 +3,7 @@
 {% block content %}
 
 <section>
-  <h2>Add a new entry:</h2>
+  <h3 class="entry-title">Add a New Entry:</h2>
 
   <form class="new_entry" method="POST">
     <p>
@@ -16,9 +16,12 @@
       <textarea type="text" name="markdown"></textarea>
     </p>
     <br>
-    <p>
-      You are not authenticated...<br>You may not add or edit an entry.
-    </p>
+    <div class="noauth">
+      <img class="x" src="{{request.static_url('pyramid_learning_journal:static/x.jpg')}}" alt="x">
+      <p class="subtitle">
+        You are not authenticated...<br>You may not add or edit an entry.
+      </p>
+    </div>
   </form>
 </section>
 
