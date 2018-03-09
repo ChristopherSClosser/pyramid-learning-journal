@@ -2,13 +2,14 @@
 
 {% block content %}
 
-<section>
-  <h1>{{ entry.title }}</h1>
+<section class="entry">
+  <h3 class="entry-title">{{ entry.title }}</h3>
   <hr />
-  <p>Created {{ entry.created }} </p>
   <button><a href="{{ request.route_url('edit', id=entry.id) }}">Edit</a></button>
   <br>
-  <p>{{ entry.markdown|safe }}</p>
+  <p>{{ entry.markdown|safe }}</p><br>
+  <p class="date">Created {{ entry.created }} </p>
+  <hr><br>
 </section>
 
 {% endblock %}
