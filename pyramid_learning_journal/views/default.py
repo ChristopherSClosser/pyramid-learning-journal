@@ -11,6 +11,24 @@ import os
 HERE = os.path.dirname(__file__)
 
 
+@view_config(renderer='json', route_name='api')
+def api_view(request):
+    """Display entries as json."""
+    query = request.dbsession.query(MyModel)
+    entries = query.order_by(MyModel.created.desc()).all()
+    return {
+        'entries': [
+            {
+                'id': entry.id,
+                'title': entry.title,
+                'md': entry.markdown,
+                'date': entry.created.isoformat(),
+            }
+            for entry in entries
+        ]
+    }
+
+
 @view_config(route_name='home', renderer='../templates/home.jinja2')
 def list_view(request):
     """Display the list of entries."""
