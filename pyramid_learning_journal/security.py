@@ -8,14 +8,6 @@ from pyramid.security import Allow
 from passlib.apps import custom_app_context as pwd_context
 
 
-# def is_authenticated(username, password):
-#     """."""
-#     return (
-#         username == os.environ.get('username', '')
-#         and os.environ.get('password', '')
-#     )
-
-
 def is_authenticated(username, password):
     """."""
     stored_username = os.environ.get('AUTH_USERNAME', '')
