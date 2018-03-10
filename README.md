@@ -1,27 +1,17 @@
 # pyramid-learning-journal
 ---
 ### Description
-Version: *0.4*
+Version: *1.0*
 
 pyramid-learning-journal
 
 ### Author
 ---
-* https://github.com/ChristopherSClosser/pyramid-learning-journal
+* [Chris Closser](https://github.com/ChristopherSClosser/pyramid-learning-journal)
 
 ### Dependencies
 ---
-* config
-* transaction
-* waitress
-* deploy
-* models
-* httpexceptions
-* view
-* response
-* common
-* paster
-* Pyramid
+* See requirements.txt
 
 ### Getting Started
 ---
@@ -44,12 +34,14 @@ Now now that you have cloned your repo and changed directories into the project,
 `$ source ENV/bin/activate`
 
 `$ pip install -r requirements.txt`
+
 ##### *Serving Locally*
 Once you have cloned the application and installed the requirements, you can serve the project on your local machine by executing this command at the root level of your application, at the same level as development.ini and production.ini.
 
 `$ pserve development.ini`
 
 Once you have executed this command, open your browser, and go to `localhost:6543/`.
+
 ### Test Suite
 ---
 ##### *Running Tests*
@@ -86,13 +78,16 @@ Development files specific to the Pyramid web framework can be found in the foll
 * *python* - programming language
 * *psycopg2* - DB management system
 * *pyramid* - web framework
+* *passlib* - security management
+* *ipython* - command shell
+* *pytest* - testing suite
 
 ### License
 ---
 This project is licensed under MIT License - see the LICENSE.md file for details.
+
 ### Acknowledgements
 ---
-* Coffee
 
 *This README was generated using [writeme.](https://github.com/chelseadole/write-me)*
 
@@ -138,4 +133,4 @@ pyramid_learning_journal/models/mymodel.py       8      0   100%
 pyramid_learning_journal/views/default.py       34      0   100%
 TOTAL                                           42      0   100%
 ========================== 28 passed in 5.36 seconds ===========================
-<pre/>
+</pre>
