@@ -32,7 +32,7 @@ def detail_view(request):
 @view_config(
     route_name='new',
     renderer='../templates/entry.jinja2',
-    permission='secret',
+    # permission='secret',
 )
 def create_view(request):
     """Display create a list entry."""
@@ -50,7 +50,7 @@ def create_view(request):
 @view_config(
     route_name='delete',
     renderer='../templates/delete.jinja2',
-    permission='secret',
+    # permission='secret',
 )
 def delete_view(request):
     """."""
@@ -70,7 +70,7 @@ def delete_view(request):
 @view_config(
     route_name='edit',
     renderer='../templates/edit.jinja2',
-    permission='secret',
+    # permission='secret',
 )
 def update_view(request):
     """Display the update entry."""
