@@ -3,14 +3,12 @@
 {% block content %}
 
 <section class="entry">
+  <form method="POST">
+    <h3>Are You Sure?<br>This Entry Will Be Permanently Deleted!</h3>
+    <input type="submit" name="delete" value="YES DELETE ENTRY"/>
+  </form>
   <h3 class="entry-title">{{ entry.title }}</h3>
   <hr />
-  <button><a href="{{ request.route_url('edit', id=entry.id) }}">Edit</a></button>
-  <button>
-    <a href="{{ request.route_url('delete', id=entry.id) }}">
-      Delete
-    </a>
-  </button>
   <br>
   <p>{{ entry.markdown|safe }}</p><br>
   <p class="date">Created {{ entry.created }} </p>
