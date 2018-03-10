@@ -1,9 +1,11 @@
-# pyramid-learning-journal
+# Pyramid Based Journal
 ---
 ### Description
-Version: *1.0*
+Version: *1.0.1*
 
-pyramid-learning-journal
+My Personal Blog Page
+
+* *You can access it* [here](https://chrisclosser.herokuapp.com)
 
 ### Author
 ---
