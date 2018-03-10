@@ -4,7 +4,8 @@ from .default import (
     list_view,
     detail_view,
     create_view,
-    update_view
+    update_view,
+    delete_view,
 )
 
 
@@ -14,3 +15,4 @@ def includeme(config):
     config.add_view(detail_view, route_name='detail')
     config.add_view(create_view, route_name='new')
     config.add_view(update_view, route_name='edit')
+    config.add_view(delete_view, route_name='delete')

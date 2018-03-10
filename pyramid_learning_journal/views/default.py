@@ -48,6 +48,26 @@ def create_view(request):
 
 
 @view_config(
+    route_name='delete',
+    renderer='../templates/delete.jinja2',
+    permission='secret',
+)
+def delete_view(request):
+    """."""
+    ident = int(request.matchdict["id"])
+    entry = request.dbsession.query(MyModel).get(ident)
+    if request.POST:
+        request.dbsession.delete(entry)
+        request.dbsession.flush()
+        return HTTPFound(request.route_url('home'))
+    form_fill = {
+        "title": entry.title,
+        "markdown": entry.markdown
+    }
+    return {"entry": form_fill}
+
+
+@view_config(
     route_name='edit',
     renderer='../templates/edit.jinja2',
     permission='secret',
