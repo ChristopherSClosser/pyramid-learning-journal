@@ -225,11 +225,6 @@ ul.plain {
     .burger {
       display: none;
     }
-    .plain {
-      margin-left: 3rem;
-      margin-right: 3rem;
-      font-size: 18px;
-    }
     .linked {
       /* position: initial; */
     }
