@@ -29,13 +29,21 @@
         </a>
       </div>
       <nav class="hidden main-nav" id="main-nav">
-        <ul>
+        <ul class="nav">
           <li><a id="home" href="https://chrisclosser.herokuapp.com">Home</a></li>
-          <hr>
-          <li><a id="home" href="/">Journals</a></li>
           <hr>
           <li><a id="github" href="/journal/new-entry">New Entry</a></li>
           <hr>
+          <li class="dropdown"><a id="home" href="/">Journals</a>
+            <div class="dropdown-content">
+            {% if entries %}
+              {% for entry in entries %}
+                <div><a href="#{{ entry.title }}">{{ entry.title }}</a></div>
+                <hr>
+              {% endfor %}
+            {% endif %}
+            </div>
+          </li>
         </ul>
       </nav>
     </header>
@@ -47,7 +55,7 @@
           <section class='list' style="display: block;">
 
             <hr>
-            <h3 class="entry-title"><a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
+            <h3 class="entry-title"><a id="{{ entry.title }}" href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
             <p class="plain">{{ entry.markdown|safe }}</p><br>
             <p class="date">Created {{ entry.created }}</p>
             <hr><br>
