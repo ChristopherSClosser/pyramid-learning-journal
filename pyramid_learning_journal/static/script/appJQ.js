@@ -41,9 +41,9 @@ $(function(){
     }
   });
 
-  $('#home, #github, #gallery, #me').on('click', function(){
+  $('#home, #github, #gallery, #me, .dc').on('click', function(){
     if (window.innerWidth <= 500){
-      $('#main-nav').slideUp('fast');
+      $('#main-nav, .header').slideUp('fast');
     }
   });
 
