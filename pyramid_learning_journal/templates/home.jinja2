@@ -12,7 +12,7 @@
     <link href="{{request.static_url('pyramid_learning_journal:static/theme.css')}}" rel="stylesheet">
     <link href="{{request.static_url('pyramid_learning_journal:static/modules.css')}}" rel="stylesheet">
   </head>
-  <body>
+  <body class="noscroll">
     <header class="header nav-down">
       <div class="my-name">
         Journal:
@@ -33,17 +33,19 @@
           <li><a id="home" href="https://chrisclosser.herokuapp.com">Home</a></li>
           <hr>
           <li><a id="github" href="/journal/new-entry">New Entry</a></li>
+          {% if entries %}
           <hr>
-          <li class="dropdown"><a id="home" href="/">Journals</a>
-            <div class="dropdown-content">
-            {% if entries %}
+          <li class="dropdown">Journals
+            <!--<a id="home" href="/">Journals</a>-->
+            <div class="hidden dropdown-content">
               {% for entry in entries %}
-                <div><a href="#{{ entry.title }}">{{ entry.title }}</a></div>
                 <hr>
+                <div><a href="#{{ entry.title }}">{{ entry.title }}</a></div>
               {% endfor %}
-            {% endif %}
+              <hr><br>
             </div>
           </li>
+          {% endif %}
         </ul>
       </nav>
     </header>
