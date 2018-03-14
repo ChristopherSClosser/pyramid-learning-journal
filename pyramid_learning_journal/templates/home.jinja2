@@ -12,7 +12,7 @@
     <link href="{{request.static_url('pyramid_learning_journal:static/theme.css')}}" rel="stylesheet">
     <link href="{{request.static_url('pyramid_learning_journal:static/modules.css')}}" rel="stylesheet">
   </head>
-  <body>
+  <body class="noscroll">
     <header class="header nav-down">
       <div class="my-name">
         Journal:
@@ -29,13 +29,22 @@
         </a>
       </div>
       <nav class="hidden main-nav" id="main-nav">
-        <ul>
+        <ul class="nav">
           <li><a id="home" href="https://chrisclosser.herokuapp.com">Home</a></li>
           <hr>
-          <li><a id="home" href="/">Journals</a></li>
-          <hr>
           <li><a id="github" href="/journal/new-entry">New Entry</a></li>
+          {% if entries %}
           <hr>
+          <li class="dropdown">Journals
+            <div class="hidden dropdown-content">
+              {% for entry in entries %}
+                <hr>
+                <div><a class="dc" href="#{{ entry.title }}">{{ entry.title }}</a></div>
+              {% endfor %}
+              <hr><br>
+            </div>
+          </li>
+          {% endif %}
         </ul>
       </nav>
     </header>
@@ -44,8 +53,7 @@
       {% block content %}{% endblock %}
       {% if entries %}
         {% for entry in entries %}
-          <section class='list' style="display: block;">
-
+          <section id="{{ entry.title }}" class='list' style="display: block;">
             <hr>
             <h3 class="entry-title"><a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
             <p class="plain">{{ entry.markdown|safe }}</p><br>

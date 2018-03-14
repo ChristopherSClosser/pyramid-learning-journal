@@ -2,14 +2,14 @@
 
 // hide and show nav when scrolling
 $(function(){
-  //Keep track of last scroll
+  // Keep track of last scroll
   var lastScroll = 0;
   $(window).scroll(function(event){
-    //Sets the current scroll position
+    // Sets the current scroll position
     var st = $(this).scrollTop();
-    //Determines up-or-down scrolling
+    // Determines up-or-down scrolling
     if (st > lastScroll){
-      //Replace this with your function call for downward-scrolling
+      // Use this for downward-scrolling
       // console.log('scrolling down');
       $('.ckata').hide();
       $('.linked').hide();
@@ -17,14 +17,14 @@ $(function(){
       // removeClass('nav-down').addClass('nav-up');
     }
     else {
-      //Replace this with your function call for upward-scrolling
+      // Use this for upward-scrolling
       // console.log('scrolling up');
       $('header').slideDown('fast');
       // removeClass('nav-up').addClass('nav-down');
       $('.ckata').fadeIn('fast');
       $('.linked').fadeIn('fast');
     }
-    //Updates scroll position
+    // Updates scroll position
     lastScroll = st;
   });
 });
@@ -41,19 +41,19 @@ $(function(){
     }
   });
 
-  $('#home, #github, #gallery, #me').on('click', function(){
+  $('#home, #github, #gallery, #me, .dc').on('click', function(){
     if (window.innerWidth <= 500){
-      $('#main-nav').slideUp('fast');
+      $('#main-nav, .header').slideUp('fast');
     }
   });
 
-  // $('.list-projects').on('click', function(){
-  //   if ($('ul').is(':hidden')){
-  //     $('#project-list').animate({width: 'toggle'},350);
-  //   } else {
-  //     $('#project-list').slideUp('fast');
-  //   }
-  // });
+  $('.dropdown').on('click', function(){
+    if ($('.dropdown-content').is(':hidden')){
+      $('.dropdown-content').slideDown('fast');
+    } else {
+      $('.dropdown-content').slideUp('fast');
+    }
+  });
 
   // $('#project-list li').on('click', function(e){
   //   e.preventDefault();

@@ -16,20 +16,19 @@
     color: rgb(60, 45, 31);
 }
 
-
-#main-nav ul {
+/* #main-nav ul {
     display: block;
+    height: 102px;
     float: right;
     list-style-type: none;
     text-align: right;
     font-weight: lighter;
-    font-size: 0.8em;
     background: #f1f1f1;
     font-size: 18px;
     margin: auto;
     padding: 4%;
     right: 0;
-}
+} */
 /* #project-list ul {
   background: #f1f1f1;
 } */
@@ -61,8 +60,12 @@
         display: block;
         margin: 1%;
     }
-    .hidden hr {
+    nav.hidden hr {
         display: none;
+    }
+
+    div.dropdown-content hr {
+      display: block;
     }
     /* #project-list ul li {
       background: linear-gradient(to right, rgba(255,0,0,0), #f1f1f1, #f1f1f1, rgba(255,0,0,0));
