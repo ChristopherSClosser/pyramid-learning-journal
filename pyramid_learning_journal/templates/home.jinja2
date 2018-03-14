@@ -36,7 +36,6 @@
           {% if entries %}
           <hr>
           <li class="dropdown">Journals
-            <!--<a id="home" href="/">Journals</a>-->
             <div class="hidden dropdown-content">
               {% for entry in entries %}
                 <hr>
@@ -54,10 +53,9 @@
       {% block content %}{% endblock %}
       {% if entries %}
         {% for entry in entries %}
-          <section class='list' style="display: block;">
-
+          <section id="{{ entry.title }}" class='list' style="display: block;">
             <hr>
-            <h3 class="entry-title"><a id="{{ entry.title }}" href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
+            <h3 class="entry-title"><a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a></h2>
             <p class="plain">{{ entry.markdown|safe }}</p><br>
             <p class="date">Created {{ entry.created }}</p>
             <hr><br>

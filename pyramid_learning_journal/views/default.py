@@ -100,7 +100,7 @@ def update_view(request):
         entry.title = request.POST["title"]
         entry.markdown = request.POST["markdown"]
         request.dbsession.flush()
-        return HTTPFound(request.route_url('home'))
+        return HTTPFound(request.route_url('home', _anchor=entry.title))
 
     form_fill = {
         "title": entry.title,
