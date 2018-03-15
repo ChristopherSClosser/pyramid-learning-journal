@@ -113,10 +113,10 @@ section {
 
 } */
 
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content {
   text-align: left;
   display: block;
-}
+} */
 
 .my-name {
     margin: auto;
