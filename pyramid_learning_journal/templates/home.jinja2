@@ -35,7 +35,7 @@
           <li><a id="github" href="/journal/new-entry">New Entry</a></li>
           {% if entries %}
           <hr>
-          <li class="dropdown">Journals
+          <li class="dropdown"><a href="" onclick="return false;">Journals</a>
             <div class="hidden dropdown-content">
               {% for entry in entries %}
                 <hr>
@@ -46,7 +46,7 @@
           </li>
           {% else %}
             <hr>
-            <li><a id="home" href="/">Journals</a></li>
+            <li class="dropdown"><a id="home" href="/">Journals</a></li>
           {% endif %}
         </ul>
       </nav>
